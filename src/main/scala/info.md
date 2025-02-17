@@ -57,5 +57,18 @@ val beard: Boolean
 val moustache: Boolean // override val moustache = parameter???
 }
 } 
+
+
+
+  
+}
+
+  def filterCharacters(listCharacters, trait): List[Characters] = {
+  val listCharacters: List[Characters] = // List("al', "lan")  sent from Eloise's logic
+  val  filteredCharacters: List[Characters] = listCharacters.filter {
+  
+
+    }
+
 ```
 
