@@ -1,6 +1,8 @@
 package src.main.scala
 
-abstract class Character(val name: String, val hairColour: Character.HairColour, val eyeColour: Character.EyeColour)
+abstract class Character(val name: String, val hairColour: Character.HairColour, val eyeColour: Character.EyeColour) {
+  val describe = ""
+}
 
 
 object Character {
