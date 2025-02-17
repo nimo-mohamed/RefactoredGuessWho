@@ -1,8 +1,8 @@
 object GameLogic extends App {
   def questions(subject: Int): String = {
-    val input: Int = term
+    val input: Int = ???
 
-    val subject: Int = subject
+    val subject: Int = ???
     // What would you like to ask about?
     // 1. Gender
     //  A) Is the person a male
@@ -27,13 +27,11 @@ object GameLogic extends App {
       val hair = "hair"
       s"Does the person have $hair hair"
     } else if (subject == 3) {
-    val eyes: String = "eyes"
-    s"Does the person have $eyes eyes"
-  }
-
-  else
-  {
+      val eyes: String = "eyes"
+      s"Does the person have $eyes eyes"
+    } else {
     "EHH EHH Invalid question"
+    }
   }
 
   def genderQuestion(genderChoice: Int): String = {
@@ -47,7 +45,7 @@ object GameLogic extends App {
 
   }
 
-  println(questions(1, 1)
+  println(questions(1))
 
 }
 
