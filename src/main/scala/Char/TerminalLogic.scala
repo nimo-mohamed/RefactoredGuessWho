@@ -1,23 +1,11 @@
 package Char
 
-import CharacterLogic.{al, april, farnoosh, lan}
+
+import CharacterLogic.{al, characterList, farnoosh, lan, april}
 
 import scala.io.StdIn.readInt
 
-object TerminalLogic extends App {
-  val characterList: List[Character] = List(al, april, lan, farnoosh)
-  println(al)
-  println(characterList)
-  def filter(characterList: List[Character], chosenCharacter: Character, filterTrait: String): List[Character] = {
-    val filterList: List[Character] = characterList.filter(
-      char => char.describe.contains(
-        filterTrait.toLowerCase
-      )
-    )
-    filterList
-  }
-
-  println(filter(characterList, april, "pink"))
+object TerminalLogic {
 
 
   def terminalLogic = {
@@ -49,7 +37,7 @@ object TerminalLogic extends App {
 
   def questions(choice: Int): String = {
     val hairColours: List[Character.HairColour] = List(Character.Blonde, Character.Black, Character.Pink)
-    val genders: List[String] = List("male", "female")
+    val genders: List[String] = List("man", "lady")
     val genderChoiceQuestions: List[String] = for (genderQuestions <- genders) yield s"Is Your person a $genders?"
     val colourQuestions: List[String] = for (hairColourQuestions <- hairColours) yield s"Does your person have $hairColours "
     val traitType: String = if (choice == 2) {
