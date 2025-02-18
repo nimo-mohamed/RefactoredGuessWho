@@ -5,17 +5,6 @@ import CharacterLogic.{al, characterList, farnoosh, lan, sheila}
 import scala.io.StdIn.readInt
 
 object TerminalLogic {
-  def filter(characterList: List[Character], chosenCharacter: Character, filterTrait: String): List[Character] = {
-    val filterList: List[Character] = characterList.filter(
-      char => char.describe.contains(
-        filterTrait.toLowerCase
-      )
-    )
-    filterList
-  }
-
-  println(filter(characterList, sheila, "pink"))
-
 
   def terminalLogic = {
     do {
@@ -46,7 +35,7 @@ object TerminalLogic {
 
   def questions(choice: Int): String = {
     val hairColours: List[Character.HairColour] = List(Character.Blonde, Character.Black, Character.Pink)
-    val genders: List[String] = List("male", "female")
+    val genders: List[String] = List("man", "lady")
     val genderChoiceQuestions: List[String] = for (genderQuestions <- genders) yield s"Is Your person a $genders?"
     val colourQuestions: List[String] = for (hairColourQuestions <- hairColours) yield s"Does your person have $hairColours "
     val traitType: String = if (choice == 2) {

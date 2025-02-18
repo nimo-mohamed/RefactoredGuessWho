@@ -22,7 +22,7 @@ object CharacterFilterLogic extends App {
     filterList
   }
 
-  println(filter(characterList, sheila, "Female").map(char => char.describe))
+  println(filter(characterList, sheila, "Lady").map(char => char.describe))
   //  def filterByGender(characterList: List[Character], gender: String): List[Character] = {
   //    characterList.filter(character => character.gender == gender)
   //
