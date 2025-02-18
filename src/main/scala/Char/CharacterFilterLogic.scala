@@ -1,10 +1,10 @@
 package Char
 
 
-import CharacterLogic.{al, farnoosh, lan, april,chararcterList}
+import CharacterLogic.{al, farnoosh, lan, april, characterList}
 
 
-object CharacterFilterLogic extends App {
+object CharacterFilterLogic {
  
 
   def filter(characterList: List[Character], chosenCharacter: Character, filterTrait: String): List[Character] = {
@@ -25,7 +25,7 @@ object CharacterFilterLogic extends App {
     filterList
   }
 
-  println(filter(characterList, april, "Lady").map(char => char.describe))
+  //println(filter(characterList, april, "Lady").map(char => char.describe))
 
 }
 
