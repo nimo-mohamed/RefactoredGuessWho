@@ -1,10 +1,12 @@
 package Char
 
-import CharacterLogic.{al, characterList, farnoosh, lan, sheila}
+
+import CharacterLogic.{al, characterList, farnoosh, lan, april}
 
 import scala.io.StdIn.readInt
 
 object TerminalLogic {
+
 
   def terminalLogic = {
     do {
