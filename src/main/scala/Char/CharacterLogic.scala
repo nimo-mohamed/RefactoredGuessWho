@@ -1,38 +1,39 @@
-package src.main.scala
+package Char
 
 import scala.util.Random
 
-object CharacterLogic extends  App {
-  val al = new Male("Al", Character.Pink, Character.Blue)
+object CharacterLogic extends App {
+  val al = new Male("Al", Char.Character.Pink, Char.Character.Blue)
+  println(al)
   println(al.name, al.eyeColour, al.hairColour)
   println(al.describe)
-  val sheila: Female = new Female("Sheila", Character.Black, Character.Brown)
+  val sheila: Female = new Female("Sheila", Char.Character.Black, Char.Character.Brown)
   println(sheila.describe)
-  val lan = new Female("Lan", Character.Pink, Character.Green)
-  val farnoosh = new Female("Farnoosh", Character.Pink, Character.Blue)
-  val characterList: List[Character] = List(al, sheila, lan, farnoosh)
+  val lan = new Female("Lan", Char.Character.Pink, Char.Character.Green)
+  val farnoosh = new Female("Farnoosh", Char.Character.Pink, Char.Character.Blue)
+  val characterList: List[Char.Character] = List(al, sheila, lan, farnoosh)
 
   val randomnum: Int = Random.between(0, characterList.length - 1)
   println(randomnum)
-  val randomChar: Character = characterList(randomnum)
+  val randomChar: Char.Character = characterList(randomnum)
   println(randomChar.name)
 
   //sorting out how our logic works
 
-  val hairList: List[Character.HairColour] = List(Character.Black, Character.Blonde, Character.Pink)
-  val eyeList: List[Character.EyeColour] = List(Character.Brown, Character.Hazel, Character.Blue, Character.Green)
+  val hairList: List[Char.Character.HairColour] = List(Char.Character.Black, Char.Character.Blonde, Char.Character.Pink)
+  val eyeList: List[Char.Character.EyeColour] = List(Char.Character.Brown, Char.Character.Hazel, Char.Character.Blue, Char.Character.Green)
 
   //lists of features to use when creating random characters
 
-  def createRandomMale(name: String): Character = {
-    val hair: Character.HairColour = hairList(Random.between(0, hairList.length))
-    val eye: Character.EyeColour = eyeList(Random.between(0, eyeList.length))
+  def createRandomMale(name: String): Char.Character = {
+    val hair: Char.Character.HairColour = hairList(Random.between(0, hairList.length))
+    val eye: Char.Character.EyeColour = eyeList(Random.between(0, eyeList.length))
     new Male(name, hair, eye)
   }
 
-  def createRandomFemale(name: String): Character = {
-    val hair: Character.HairColour = hairList(Random.between(0, hairList.length - 1))
-    val eye: Character.EyeColour = eyeList(Random.between(0, eyeList.length - 1))
+  def createRandomFemale(name: String): Char.Character = {
+    val hair: Char.Character.HairColour = hairList(Random.between(0, hairList.length - 1))
+    val eye: Char.Character.EyeColour = eyeList(Random.between(0, eyeList.length - 1))
     new Female(name, hair, eye)
   }
 
@@ -48,10 +49,10 @@ object CharacterLogic extends  App {
 
   //choose the board size here (make sure the x*y <= how many names we have in each list)
 
-  def createCharList(numOfChars: Int): List[Character] = (for {
+  def createCharList(numOfChars: Int): List[Char.Character] = (for {
     num: Int <- 1 to numOfChars
     genderNum: Int = Random.between(1, 3)
-    newChar: Character = {
+    newChar: Char.Character = {
       if (genderNum == 1) {
         createRandomMale(maleNames(num - 1))
       } else {
@@ -62,11 +63,11 @@ object CharacterLogic extends  App {
 
   //method to create a list (length n) of characters with randomised features
 
-  val fullCharList: List[Character] = createCharList(boardX*boardY)
+  val fullCharList: List[Char.Character] = createCharList(boardX*boardY)
 
   //value of list of random characters which will fill our board
 
-  val chosenChar: Character = fullCharList(Random.between(0, fullCharList.length))
+  val chosenChar: Char.Character = fullCharList(Random.between(0, fullCharList.length))
 
   //this is the character the computer has picked to play as
 
@@ -82,13 +83,13 @@ object CharacterLogic extends  App {
 
   printStartBoard(5, 4) //prints example of this
 
-  val filteredCharList: List[Character] = fullCharList.filter(char => char.hairColour == Character.Pink)
+  val filteredCharList: List[Char.Character] = fullCharList.filter(char => char.hairColour == Char.Character.Pink)
 
   println(fullCharList.map(char => char.describe))
 
   //an example list of filtered characters and their descriptions
 
-  def boardAsRow(x: Int, y: Int, fullList: List[Character], filteredList: List[Character]): List[String] = (for {
+  def boardAsRow(x: Int, y: Int, fullList: List[Char.Character], filteredList: List[Char.Character]): List[String] = (for {
     num: Int <- 0 to x*y-1
     piece: String = if (filteredList.contains(fullList(num))) {
       "-O-"
@@ -97,7 +98,7 @@ object CharacterLogic extends  App {
     }
   } yield piece).mkString.grouped(3*x).toList
 
-  def printBoard(x: Int, y: Int, fullList: List[Character], filteredList: List[Character]): Unit = for {
+  def printBoard(x: Int, y: Int, fullList: List[Char.Character], filteredList: List[Char.Character]): Unit = for {
     numY: Int <- 0 to y-1
   } println(boardAsRow(x, y, fullList, filteredList)(numY))
 
@@ -105,7 +106,7 @@ object CharacterLogic extends  App {
 
   // methods to compare the full list of characters, with the remaining possibilities for the computer's character. It then prints what the board will look like after this go.
 
-  println(filteredCharList.map((char: Character) => char.describe).mkString("\n"))
+  println(filteredCharList.map((char: Char.Character) => char.describe).mkString("\n"))
 
   // prints a description of each of the remaining characters
 }
