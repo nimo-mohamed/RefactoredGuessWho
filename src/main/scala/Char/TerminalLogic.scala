@@ -1,11 +1,23 @@
-import TerminalLogic.{subject, terminalLogic}
-import src.main.scala.Character.HairColour
-import src.main.scala.Character
-import src.main.scala.CharacterLogic.characterList
+package Char
 
-import scala.io.StdIn.{readInt, readLine}
+import CharacterLogic.{al, farnoosh, lan, sheila}
+
+import scala.io.StdIn.readInt
 
 object TerminalLogic extends App {
+  val characterList: List[Character] = List(al, sheila, lan, farnoosh)
+  println(al)
+  println(characterList)
+  def filter(characterList: List[Character], chosenCharacter: Character, filterTrait: String): List[Character] = {
+    val filterList: List[Character] = characterList.filter(
+      char => char.describe.contains(
+        filterTrait.toLowerCase
+      )
+    )
+    filterList
+  }
+
+  println(filter(characterList, sheila, "pink"))
 
 
   def terminalLogic = {
