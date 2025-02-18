@@ -1,11 +1,11 @@
 package Char
 
-import CharacterLogic.{al, farnoosh, lan, sheila}
+import CharacterLogic.{al, april, farnoosh, lan}
 
 import scala.io.StdIn.readInt
 
 object TerminalLogic extends App {
-  val characterList: List[Character] = List(al, sheila, lan, farnoosh)
+  val characterList: List[Character] = List(al, april, lan, farnoosh)
   println(al)
   println(characterList)
   def filter(characterList: List[Character], chosenCharacter: Character, filterTrait: String): List[Character] = {
@@ -17,7 +17,7 @@ object TerminalLogic extends App {
     filterList
   }
 
-  println(filter(characterList, sheila, "pink"))
+  println(filter(characterList, april, "pink"))
 
 
   def terminalLogic = {
