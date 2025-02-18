@@ -3,7 +3,7 @@ package Char
 
 import CharacterLogic.{al, april, boardX, boardY, characterList, chosenChar, farnoosh, lan, printBoard, printStartBoard}
 
-import scala.io.StdIn.readInt
+import scala.io.StdIn.{readInt, readLine}
 
 object TerminalLogic extends App {
 
@@ -48,7 +48,7 @@ object TerminalLogic extends App {
     } else if (subjectNum == 3) {
       val eyes: String = "eyes"
       println("Choose question Number \n 1. Does the person have Blue eyes? \n 2. Does the person have Brown eyes? \n 3. Does the person have Hazel eyes?  \n 4. Does the person have Green eyes?")
-      val choice: Int = readInt()
+      val choice: Int = readLine().toInt
       if (choice == 1) {
         "blue"
       } else if (choice == 2) {
@@ -72,16 +72,25 @@ object TerminalLogic extends App {
     print("2. Hair colour? \n")
     print("3. Eye colour? \n")
     //print("4. Choose final character \n") add methodology later
-    val subjectChoice: Int = readInt()
-    val chosenTrait: String = subject(subjectChoice)
-    val filterList: List[Character] = CharacterFilterLogic.filter(listToFilter, chosenChar, chosenTrait, subjectChoice)
-    println("\n")
-    printBoard(boardX, boardY, characterList, filterList)
-    println("\n")
-    println(filterList.map((char: Char.Character) => char.describe).mkString("\n"))
-    println("\n")
-    filterList
+    val subjectChoice: Int = readLine().toInt
+    if (subjectChoice > 0 && subjectChoice < 5) {
+      val chosenTrait: String = subject(subjectChoice)
+      val filterList: List[Character] = CharacterFilterLogic.filter(listToFilter, chosenChar, chosenTrait, subjectChoice)
+      val numOfFlipped: Int = listToFilter.length - filterList.length
+      print("\n")
+      printBoard(boardX, boardY, characterList, filterList)
+      print("\n")
+      println(s"$numOfFlipped characters eliminated!!")
+      print("\n")
+      println(filterList.map((char: Char.Character) => char.describe).mkString("\n"))
+      print("\n")
+      filterList
+    } else {
+      runGame(listToFilter)
+    }
+
   }
+
 
   def filterMessage(subjectNum: Int, chosenTrait: String, correct: Boolean): Unit = {
     val subject: String = {
