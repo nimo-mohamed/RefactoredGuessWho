@@ -2,7 +2,7 @@ package Char
 
 import scala.util.Random
 
-object CharacterLogic extends App {
+object CharacterLogic {
   val al = new Male("Al", Char.Character.Pink, Char.Character.Blue)
   println(al)
   println(al.name, al.eyeColour, al.hairColour)

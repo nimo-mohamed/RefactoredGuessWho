@@ -1,21 +1,28 @@
 package Char
 
-import CharacterLogic.{al, farnoosh, lan, sheila}
+import CharacterLogic.{al, characterList, farnoosh, lan, sheila}
 
 
 object CharacterFilterLogic extends App {
-  val characterList: List[Character] = List(al, sheila, lan, farnoosh)
-  println(characterList)
   def filter(characterList: List[Character], chosenCharacter: Character, filterTrait: String): List[Character] = {
-    val filterList: List[Character] = characterList.filter(
-      char => char.describe.contains(
-        filterTrait.toLowerCase
-      )
-    )
+    val filterList: List[Character] =
+      if (chosenCharacter.describe.contains(filterTrait.toLowerCase())) {
+        characterList.filter(
+          char => char.describe.contains(
+            filterTrait.toLowerCase
+          )
+        )
+      } else {
+        characterList.filterNot(
+          char => char.describe.contains(
+            filterTrait.toLowerCase
+          )
+        )
+      }
     filterList
   }
 
-  println(filter(characterList, sheila, "pink"))
+  println(filter(characterList, sheila, "Female").map(char => char.describe))
   //  def filterByGender(characterList: List[Character], gender: String): List[Character] = {
   //    characterList.filter(character => character.gender == gender)
   //

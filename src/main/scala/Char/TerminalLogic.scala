@@ -1,13 +1,10 @@
 package Char
 
-import CharacterLogic.{al, farnoosh, lan, sheila}
+import CharacterLogic.{al, characterList, farnoosh, lan, sheila}
 
 import scala.io.StdIn.readInt
 
-object TerminalLogic extends App {
-  val characterList: List[Character] = List(al, sheila, lan, farnoosh)
-  println(al)
-  println(characterList)
+object TerminalLogic {
   def filter(characterList: List[Character], chosenCharacter: Character, filterTrait: String): List[Character] = {
     val filterList: List[Character] = characterList.filter(
       char => char.describe.contains(
