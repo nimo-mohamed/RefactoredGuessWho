@@ -7,15 +7,15 @@ case class GuessWho(name: String, , hairColour: GuessWho.HairColour, eyeColour: 
 }
 
 
-//object GuessWhoLogic extends App {
-//  //al nameList: List[String] = List("Al", "Betty", "Bob")
-//
-//  val al = GuessWho("Al", moustache = true, Pink, Green )
-//
-//  // val chosenCharacter = nameList(math.random(0 to nameList.length-1))
-//  println(al)
-//
-//}
+object GuessWhoLogic extends App {
+  //al nameList: List[String] = List("Al", "Betty", "Bob")
+
+  val al = GuessWho("Al", moustache = true, Pink, Green )
+
+  // val chosenCharacter = nameList(math.random(0 to nameList.length-1))
+  println(al)
+
+}
 
 // Top abstract class of Character
 // subclasses of Male -

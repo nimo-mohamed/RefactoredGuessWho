@@ -78,8 +78,6 @@ object TerminalLogic extends App {
 
   }
 
-
-
   def runGame(listToFilter: List[Character]): List[Character] = {
     print("What would you like to ask about? \n")
     print("1. Gender? \n")
