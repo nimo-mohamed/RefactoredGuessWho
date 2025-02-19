@@ -63,13 +63,18 @@ object TerminalLogic extends App {
     } else if (subjectNum == 4) {
       val charToNum = listToFilter.zipWithIndex.map { case (person, index) => ( index + 1 ) + " " + person.name   }
       val charToMap: Map[Int, String] = listToFilter.zipWithIndex.map { case (person, index) => (index + 1) -> person.name }.toMap
-      println(s"${for (person <- charToNum) yield println(person)}")
+      printCharList(charToNum)
       val choice: Int = readLine().toInt
       val name: String = charToMap(choice)
         s"$name"
     } else {
       "invalid"
     }
+
+  def printCharList(charList: List[String]): Unit = {
+    for (person <- charList) yield println(person)
+
+  }
 
 
 
