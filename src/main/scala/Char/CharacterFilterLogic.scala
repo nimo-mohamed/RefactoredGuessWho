@@ -8,9 +8,9 @@ object CharacterFilterLogic {
  
 
   def filter(characterList: List[Character], chosenCharacter: Character, filterTrait: String, subject: Int): List[Character] = {
-    val filterWithSpace: String = (" " + filterTrait.toLowerCase)
+    val filterWithSpace: String = (" " + filterTrait)
     val filterList: List[Character] =
-      if (chosenCharacter.describe.contains(filterWithSpace.toLowerCase())) {
+      if (chosenCharacter.describe.contains(filterWithSpace)) {
         TerminalLogic.filterMessage(subject, filterTrait, correct = true)
         characterList.filter(
           char => char.describe.contains(
@@ -22,7 +22,7 @@ object CharacterFilterLogic {
         TerminalLogic.filterMessage(subject, filterTrait, correct = false)
         characterList.filterNot(
           char => char.describe.contains(
-            " " + filterTrait.toLowerCase
+            filterWithSpace
           )
         )
       }

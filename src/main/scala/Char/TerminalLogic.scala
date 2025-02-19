@@ -22,7 +22,7 @@ object TerminalLogic extends App {
     println(s"Congratulations! ${chosenChar.name} was my chosen character. You win!")
   }
 
-  def subject(subjectNum: Int): String =
+  def subject(subjectNum: Int, listToFilter: List[Character]): String =
     if (subjectNum == 1) {
       println("Choose question Number \n 1. Is your person a Male? \n 2. Is you person a Female?")
       val choice: Int = readInt()
@@ -60,6 +60,13 @@ object TerminalLogic extends App {
       } else {
         "invalid"
       }
+    } else if (subjectNum == 4) {
+      val charToNum = listToFilter.zipWithIndex.map { case (person, index) => ( index + 1 ) + " " + person.name   }
+      val charToMap: Map[Int, String] = listToFilter.zipWithIndex.map { case (person, index) => (index + 1) -> person.name }.toMap
+      println(s"${for (person <- charToNum) yield println(person)}")
+      val choice: Int = readLine().toInt
+      val name: String = charToMap(choice)
+        s"$name"
     } else {
       "invalid"
     }
@@ -71,10 +78,10 @@ object TerminalLogic extends App {
     print("1. Gender? \n")
     print("2. Hair colour? \n")
     print("3. Eye colour? \n")
-    //print("4. Choose final character \n") add methodology later
+    print("4. Choose final character \n") //add methodology later
     val subjectChoice: Int = readLine().toInt
     if (subjectChoice > 0 && subjectChoice < 5) {
-      val chosenTrait: String = subject(subjectChoice)
+      val chosenTrait: String = subject(subjectChoice, listToFilter)
       val filterList: List[Character] = CharacterFilterLogic.filter(listToFilter, chosenChar, chosenTrait, subjectChoice)
       val numOfFlipped: Int = listToFilter.length - filterList.length
       print("\n")
@@ -100,6 +107,8 @@ object TerminalLogic extends App {
         "hair"
       } else if (subjectNum == 3) {
         "eyes"
+      } else if (subjectNum == 4) {
+        "name"
       } else {
         "invalid"
       }
@@ -110,6 +119,9 @@ object TerminalLogic extends App {
       println(s"Sorry!! My chosen character does not have $chosenTrait $subject")
     }
   }
+
+  def chooseChar(choice: Character, chosenCharacter: Character): Boolean =
+    if (choice == chosenCharacter) true else false
 
   terminalLogic
 }
