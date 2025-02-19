@@ -10,6 +10,7 @@ object TerminalLogic extends App {
   //val chosenCharacter = CharacterLogic.chosenChar
 
   def terminalLogic = {
+    println("\u001b[31m .d8888b.                                     \nd88P  Y88b                                    \n888    888                                    \n888        888  888  .d88b.  .d8888b  .d8888b \n888  88888 888  888 d8P  Y8b 88K      88K     \n888    888 888  888 88888888 \"Y8888b. \"Y8888b.\nY88b  d88P Y88b 888 Y8b.          X88      X88\n \"Y8888P88  \"Y88888  \"Y8888   88888P'  88888P'\n                                              \n                                              \n                                              \n888       888 888              .d8888b.       \n888   o   888 888             d88P  Y88b      \n888  d8b  888 888                  .d88P      \n888 d888b 888 88888b.   .d88b.   .d88P\"       \n888d88888b888 888 \"88b d88\"\"88b  888\"         \n88888P Y88888 888  888 888  888  888          \n8888P   Y8888 888  888 Y88..88P               \n888P     Y888 888  888  \"Y88P\"   888          \u001b[0m\n")
     printStartBoard(boardX, boardY)
     println("\n")
     println(characterList.map((char: Char.Character) => char.describe).mkString("\n"))
@@ -19,7 +20,8 @@ object TerminalLogic extends App {
       val oldFilteredList: List[Character] = newFilteredList
       newFilteredList = runGame(oldFilteredList)
     }
-    println(s"Congratulations! ${chosenChar.name} was my chosen character. You win!")
+    println(s"\u001b[32mCongratulations! ${chosenChar.name} was my chosen character. You win!\u001b[0m")
+    println("\u001b[35m                                   .''.       \n       .''.      .        *''*    :_\\/_:     . \n      :_\\/_:   _\\(/_  .:.*_\\/_*   : /\\ :  .'.:.'.\n  .''.: /\\ :   ./)\\   ':'* /\\ * :  '..'.  -=:o:=-\n :_\\/_:'.:::.    ' *''*    * '.\\'/.' _\\(/_'.':'.'\n : /\\ : :::::     *_\\/_*     -= o =-  /)\\    '  *\n  '..'  ':::'     * /\\ *     .'/.\\'.   '\n      *            *..*         :\n        *\n        *\u001b[0m")
   }
 
   def subject(subjectNum: Int, listToFilter: List[Character]): String =

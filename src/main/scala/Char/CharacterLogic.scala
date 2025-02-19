@@ -77,7 +77,7 @@ object CharacterLogic {
 
   def startBoardAsRow(x: Int, y: Int):List[String] = (for {
     num: Int <- 1 to x*y
-  } yield "-O-").mkString.grouped(3*x).toList
+  } yield "\u001b[34m-O-\u001b[0m").mkString.grouped(12*x).toList
 
   def printStartBoard(x: Int, y: Int): Unit = for {
     numY: Int <- 0 until y
@@ -96,11 +96,11 @@ object CharacterLogic {
   def boardAsRow(x: Int, y: Int, fullList: List[Char.Character], filteredList: List[Char.Character]): List[String] = (for {
     num: Int <- 0 to x*y-1
     piece: String = if (filteredList.contains(fullList(num))) {
-      "-O-"
+      "\u001b[34m-O-\u001b[0m"
     } else {
-      "-X-"
+      "\u001b[31m-X-\u001b[0m"
     }
-  } yield piece).mkString.grouped(3*x).toList
+  } yield piece).mkString.grouped(12*x).toList
 
   def printBoard(x: Int, y: Int, fullList: List[Char.Character], filteredList: List[Char.Character]): Unit = for {
     numY: Int <- 0 to y-1
