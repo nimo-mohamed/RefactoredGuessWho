@@ -1,4 +1,6 @@
-object GameLogic extends App {
+package Char
+
+object GameLogic {
   def questions(subject: Int): String = {
     val input: Int = ???
 
