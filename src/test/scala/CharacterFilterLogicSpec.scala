@@ -4,7 +4,7 @@ import org.scalatest.wordspec.AnyWordSpec
 
 import Char.CharacterLogic.{al, characterList, farnoosh, lan, april, tudor}
 
-class CharacterFilterLogicSpec extends AnyWordSpec with Matchers {
+class CharacterFilterLogicSpec extends AnyWordSpec with Matchers { // nimo was here
   val testCharList:List[Character] = List(al, lan, april, tudor)
   "CharacterFilterLogic.filter" should {
     "return a list of characters who are female" when {
